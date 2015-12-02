@@ -1,0 +1,141 @@
+-------  OBIEE Scripts  ---
+-------- Navigation Audits -----
+
+
+  CREATE OR REPLACE FORCE VIEW "EBI_TEST_QUBIC"."MV_NAVI_AUDIT_ALERT" ("AUDIT_ID", "VESSEL_CODE", "FROM_DATE", "SENT_DATE") AS 
+  select "AUDIT_ID","VESSEL_CODE","FROM_DATE","SENT_DATE" from vlog.NAV_AUDIT_OFF_ALERT@BI_RO_ON_DANOS
+union all
+select "AUDIT_ID","VESSEL_CODE","FROM_DATE","SENT_DATE" from vlog.NAV_AUDIT_VESSEL_ALERT@BI_RO_ON_DANOS;
+
+
+
+  CREATE OR REPLACE FORCE VIEW "EBI_TEST_QUBIC"."MV_NAVI_AUDIT_ANSWERS" ("AUDIT_ID", "VESSEL_CODE", "Q_NO", "Q_TYPE", "Q_ANSWER", "Q_REMARKS", "CREATED_BY", "CREATED_DATE", "MODIFIED_BY", "MODIFIED_DATE") AS 
+  select "AUDIT_ID","VESSEL_CODE","Q_NO","Q_TYPE","Q_ANSWER","Q_REMARKS","CREATED_BY","CREATED_DATE","MODIFIED_BY","MODIFIED_DATE" from vlog.NAV_AUDIT_OFF_answers@BI_RO_ON_DANOS
+union all
+select "AUDIT_ID","VESSEL_CODE","Q_NO","Q_TYPE","Q_ANSWER","Q_REMARKS","CREATED_BY","CREATED_DATE","MODIFIED_BY","MODIFIED_DATE" from vlog.NAV_AUDIT_VSL_answers@BI_RO_ON_DANOS where q_type <> 'NAV_AUDIT_OFF';
+
+
+
+  CREATE OR REPLACE FORCE VIEW "EBI_TEST_QUBIC"."MV_NAVI_AUDIT_FEEDBACK" ("AUDIT_ID", "VESSEL_CODE", "AUDITEE_NAME", "AUDITEE_RANK", "FEEDBACK") AS 
+  select "AUDIT_ID","VESSEL_CODE","AUDITEE_NAME","AUDITEE_RANK","FEEDBACK" from vlog.NAV_AUDIT_OFF_FEEDBACK@BI_RO_ON_DANOS
+union all
+select "AUDIT_ID","VESSEL_CODE","AUDITEE_NAME","AUDITEE_RANK","FEEDBACK" from vlog.NAV_AUDIT_VSL_FEEDBACK@BI_RO_ON_DANOS;
+
+
+
+  CREATE OR REPLACE FORCE VIEW "EBI_TEST_QUBIC"."MV_NAVI_AUDIT_MAIN" ("AUDIT_ID", "VESSEL_CODE", "VESSEL_POSITION", "CREATED_BY", "CREATED_DATE", "FROM_DATE", "TO_DATE", "EXECUTIVE_SUMMARY", "MASTER_NAME") AS 
+  select "AUDIT_ID","VESSEL_CODE","VESSEL_POSITION","CREATED_BY","CREATED_DATE","FROM_DATE","TO_DATE","EXECUTIVE_SUMMARY","MASTER_NAME" from VLOG.NAV_AUDIT_OFF_MAIN@BI_RO_ON_DANOS
+union all
+select "AUDIT_ID","VESSEL_CODE","VESSEL_POSITION","CREATED_BY","CREATED_DATE","FROM_DATE","TO_DATE","EXECUTIVE_SUMMARY","MASTER_NAME" from vlog.NAV_AUDIT_VSL_MAIN@BI_RO_ON_DANOS;
+
+
+
+  CREATE OR REPLACE FORCE VIEW "EBI_TEST_QUBIC"."MV_NAVI_AUDIT_QN_MASTER" ("Q_NO", "Q_TEXT", "Q_OPTIONS", "Q_TYPE", "Q_ACTIVE", "Q_SORT_NO", "Q_CATEGORY", "Q_CAT_SORT_NO", "Q_REFERENCE") AS 
+  select "Q_NO","Q_TEXT","Q_OPTIONS","Q_TYPE","Q_ACTIVE","Q_SORT_NO","Q_CATEGORY","Q_CAT_SORT_NO","Q_REFERENCE" from vlog.nav_audit_qn_master@bi_ro_on_danos;
+
+  
+  CREATE OR REPLACE FORCE VIEW "EBI_TEST_QUBIC"."VESSEL_FLEET_MASTER" ("FLEET_TYPE", "TECH_MANAGER", "VESSEL_CODE", "VESSEL_NAME") AS 
+  select 
+case when A.TECH_MANAGER in ('AFRAMAX','PRODUCT','VLCC','SUEZMAX','LPG','CHEMICAL') then 'FLEET A' else 
+case when A.tech_Manager in ('BULK') then 'FLEET B' else
+case when A.tech_manager in ('CONTAINERS','CONTAINER','PCTC') then 'FLEET C' end end end FLEET_TYPE,A.tech_manager,a.vessel_code,a.vessel_name
+from
+vessel_changes A,
+dbsynch.dbsynch_Vessel_list@BI_RO_ON_DANOS b
+where
+a.vessel_code=b.vesselCode and b.vesselselected='True' and 
+A.active_for_crew='Y' and a.tech_manager is not null and a.tech_manager not in ('.','SOLD','ZODIAC','NEW','YACHT','OFFICE','PSO');
+
+
+------- Inspection -----
+
+
+  CREATE OR REPLACE FORCE VIEW "EBI_TEST_QUBIC"."MV_INSPECTION_FACT" ("INSPECTION_ID", "IIQ_ID", "QQ_ID", "QUESTION_ID", "QQC_ID", "INSP_CATEGORY_ID", "TEMPLATE_ID") AS 
+  (select insp.id inspection_id,
+       insp_inspection_questionnaire.id iiq_id,
+       insp_questionnaire_question.id QQ_id,
+       insp_question.id Question_id,
+       insp_questionnaire_question.QUESTIONNAIRE_CATEGORY_ID QQC_ID,
+       insp_category.id insp_category_id,
+       insp_templates.id template_id
+       from 
+       insp_inspections insp,
+       insp_inspection_questionnaire,
+       insp_questionnaire_question,
+       insp_questionnaire_category,
+       insp_category,
+       insp_templates,
+       insp_question  
+       where
+       insp.id = insp_inspection_questionnaire.inspection_ID(+) and 
+       insp_inspection_questionnaire.INSP_QUESTIONNAIRE_QUESTION_ID = INSP_QUESTIONNAIRE_QUESTION.id (+) and 
+       insp_questionnaire_question.QUESTIONNAIRE_CATEGORY_ID = insp_questionnaire_category.id(+) and
+       insp_questionnaire_category.CATEGORY_ID = insp_category.id (+) and 
+       insp.template_id = insp_templates.id (+) and
+       insp_questionnaire_question.QUESTION_ID = insp_question.id and insp_inspection_questionnaire.inspection_id(+) = insp.id);
+
+
+------- MoC --------
+
+
+  CREATE OR REPLACE FORCE VIEW "EBI_TEST_QUBIC"."MV_MOC_INSPECTION_ANSWERS" ("AUDIT_ID", "VESSEL_CODE", "CHAPTER_NAME", "OB_COUNT1", "REQ_COUNT", "FLAG") AS 
+  SELECT distinct request_id audit_id ,
+    vessel_code,
+    b.chapter chapter_name ,
+    COUNT(deficiency) ob_count1,
+    count(distinct Request_id) Req_Count,
+    'MOC' FLAG
+  FROM moc_deficiencies a,
+       moc_viq_questions b
+  where a.section = b.question_number
+  GROUP BY request_id,
+     b.chapter,
+    vessel_code,
+    'MOC'
+  UNION ALL
+  SELECT distinct a.audit_id audit_id ,
+    a.vessel_code vessel_Code,
+   b.q_category chapter_name,
+    COUNT(a.Q_Answer) ob_count2,
+    count (distinct a.audit_id||a.vessel_Code) req_count,
+    a.Q_TYPE
+  FROM mv_navi_audit_answers a,
+    mv_navi_audit_qn_master b
+  WHERE a.q_no=b.q_no
+  AND b.q_type LIKE 'SIRE%'
+  AND a.q_type LIKE 'SIRE%'
+  AND a.q_answer='No'
+  GROUP BY a.audit_id,
+    a.vessel_code,
+    b.q_category,
+    a.q_type;
+
+	
+	
+  CREATE OR REPLACE FORCE VIEW "EBI_TEST_QUBIC"."MV_MOC_INSPECTION_QN_MASTER" ("CHAPTER", "CHAPTER_NUMBER", "FLAG") AS 
+  (select distinct replace(upper(q_category),'&','AND') chapter,Min(to_char(q_cat_Sort_no)) chapter_number,q_type flag from mv_navi_audit_qn_master where q_type like 'SIRE%' GROUP BY replace(upper(q_category),'&','AND'),q_type 
+union all
+select distinct replace(upper(chapter),'&','AND'),substr(question_number,1,(instr(question_number,'.')-1)) chapter_number,'MOC' flag from moc_viq_questions);
+
+
+
+  CREATE OR REPLACE FORCE VIEW "EBI_TEST_QUBIC"."MV_MOC_SIRE_INSPECTION" ("AUDIT_ID", "VESSEL_CODE", "MOC_ID", "FLAG", "AUDIT_DATE") AS 
+  select Audit_id,Vessel_code,moc_id,Flag,audit_date from 
+          (select request_id  Audit_id,Vessel_code,Moc_id,INSPECTION_DATE Audit_date,'MOC' flag from MOC_INSPECTION_REQUESTS where upper(insp_status) in ('INSPECTED','FAILED','SIRE REPORT REPLIED','SIRE REPORT RECEIVED','INSPN PROCESS COMPLT','ACCEPTED') 
+           union all
+           select distinct a.Audit_id,a.vessel_code,null,a.created_Date audit_date,b.Q_TYPE flag from mv_navi_audit_main a,mv_navi_audit_answers b where a.audit_id = b.audit_id and a.vessel_code = b.vessel_code and b.q_type like 'SIRE%' and a.created_date is not null           );
+
+		   
+
+----------- Incident -----
+
+
+  CREATE OR REPLACE FORCE VIEW "EBI_TEST_QUBIC"."VESSEL_FLEET_MASTER_INCIDENT" ("FLEET", "FLEET_TYPE_SUB", "FLEET_TYPE", "VESSEL_CODE", "VESSEL_NAME", "MANAGED_BY_EPS") AS 
+  select 
+case when upper(A.fleet_type) in ('AFRAMAX','PRODUCT','VLCC','SUEZMAX','LPG','CHEMICAL','TANKERS') then 'FLEET A' else 
+case when upper(A.fleet_type) like ('BULK%') then 'FLEET B' else
+case when upper(A.fleet_type) in ('CONTAINERS','CONTAINER','PCTC') then 'FLEET C' end end end FLEET,a.fleet_type_sub,A.fleet_type,a.vessel_code,a.vessel_name,A.Managed_by_eps
+from
+vesselmaster A;
+
+
