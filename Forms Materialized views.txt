@@ -1,0 +1,269 @@
+
+----------------------------------- DAILY FORMS DATA ----------
+
+
+  CREATE MATERIALIZED VIEW "EBI_TEST_QUBIC"."MV_FORMS_MGMT_DAILY_DATA" ("FM_FORM_ID", "FM_FORMTYPE_ID", "FM_DATE", "MONTH_NUM", "VESSEL_CODE", "DATA_NODE", "DATA_POINT", "DATA_VALUE", "LAST_REFRESH_DATE")
+  ORGANIZATION HEAP PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "TS_EBI_DAT" 
+  BUILD IMMEDIATE
+  USING INDEX 
+  REFRESH FORCE ON DEMAND
+  USING DEFAULT LOCAL ROLLBACK SEGMENT
+  USING ENFORCED CONSTRAINTS DISABLE QUERY REWRITE
+  AS with
+data as
+(  select fm.fm_form_id,fm.fm_formtype_id,fm.fm_date,fm.vessel_code,ft.fm_periodicity_id,replace(replace(fm.fm_Data,'xmlns=''generic''',''),'<?xml version=''1.0'' encoding=''utf-8''?>','') XmlString  from
+   forms_master fm ,
+   form_types ft
+     WHERE fm.fm_formtype_id     = ft.fm_formtype_id
+AND ft.fm_periodicity_id    in (1)
+)
+select t.fm_form_id,t.fm_formtype_id,t.fm_date,to_number(to_char(t.fm_date,'YYYYMM')) month_num,t.vessel_code,replace(x.nams,'_',' ') data_Node,extractvalue(xmltype(t.XmlString),'//'||x.nams||'/@attr') Data_point, nvl(x.vals,0) data_value,sysdate last_refresh_date
+  from data t,
+  xmltable('for $n in //*[count(./*) = 0]
+                 return
+                 <paths>
+                   <nams>{name($n)}</nams>
+                   <vals>{$n}</vals>
+                 </paths>
+                '
+                passing xmltype(t.XmlString)
+                columns nams varchar2(4000) path '/paths/nams',
+                        vals varchar2(4000) path '/paths/vals'
+               ) x
+    where is_number(x.vals)=1;
+
+   COMMENT ON MATERIALIZED VIEW "EBI_TEST_QUBIC"."MV_FORMS_MGMT_DAILY_DATA"  IS 'snapshot table for snapshot EBI_TEST_QUBIC.MV_FORMS_MGMT_DAILY_DATA';
+
+----------------------------------- MONTHLY FORMS DATA ----------
+
+
+  CREATE MATERIALIZED VIEW "EBI_TEST_QUBIC"."MV_FORMS_MGMT_DAILY_DATA" ("FM_FORM_ID", "FM_FORMTYPE_ID", "FM_DATE", "MONTH_NUM", "VESSEL_CODE", "DATA_NODE", "DATA_POINT", "DATA_VALUE", "LAST_REFRESH_DATE")
+  ORGANIZATION HEAP PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "TS_EBI_DAT" 
+  BUILD IMMEDIATE
+  USING INDEX 
+  REFRESH FORCE ON DEMAND
+  USING DEFAULT LOCAL ROLLBACK SEGMENT
+  USING ENFORCED CONSTRAINTS DISABLE QUERY REWRITE
+  AS with
+data as
+(  select fm.fm_form_id,fm.fm_formtype_id,fm.fm_date,fm.vessel_code,ft.fm_periodicity_id,replace(replace(fm.fm_Data,'xmlns=''generic''',''),'<?xml version=''1.0'' encoding=''utf-8''?>','') XmlString  from
+   forms_master fm ,
+   form_types ft
+     WHERE fm.fm_formtype_id     = ft.fm_formtype_id
+AND ft.fm_periodicity_id    in (4)
+)
+select t.fm_form_id,t.fm_formtype_id,t.fm_date,to_number(to_char(t.fm_date,'YYYYMM')) month_num,t.vessel_code,replace(x.nams,'_',' ') data_Node,extractvalue(xmltype(t.XmlString),'//'||x.nams||'/@attr') Data_point, nvl(x.vals,0) data_value,sysdate last_refresh_date
+  from data t,
+  xmltable('for $n in //*[count(./*) = 0]
+                 return
+                 <paths>
+                   <nams>{name($n)}</nams>
+                   <vals>{$n}</vals>
+                 </paths>
+                '
+                passing xmltype(t.XmlString)
+                columns nams varchar2(4000) path '/paths/nams',
+                        vals varchar2(4000) path '/paths/vals'
+               ) x
+    where is_number(x.vals)=1;
+
+   COMMENT ON MATERIALIZED VIEW "EBI_TEST_QUBIC"."MV_FORMS_MGMT_MONTHLY_DATA"  IS 'snapshot table for snapshot EBI_TEST_QUBIC.MV_FORMS_MGMT_MONTHLY_DATA';
+
+   
+   ----------------------------------- QUARTERLY FORMS DATA ----------
+
+
+  CREATE MATERIALIZED VIEW "EBI_TEST_QUBIC"."MV_FORMS_MGMT_QTR_DATA" ("FM_FORM_ID", "FM_FORMTYPE_ID", "FM_DATE", "MONTH_NUM", "VESSEL_CODE", "DATA_NODE", "DATA_POINT", "DATA_VALUE", "LAST_REFRESH_DATE")
+  ORGANIZATION HEAP PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "TS_EBI_DAT" 
+  BUILD IMMEDIATE
+  USING INDEX 
+  REFRESH FORCE ON DEMAND
+  USING DEFAULT LOCAL ROLLBACK SEGMENT
+  USING ENFORCED CONSTRAINTS DISABLE QUERY REWRITE
+  AS with
+data as
+(  select fm.fm_form_id,fm.fm_formtype_id,fm.fm_date,fm.vessel_code,ft.fm_periodicity_id,replace(replace(fm.fm_Data,'xmlns=''generic''',''),'<?xml version=''1.0'' encoding=''utf-8''?>','') XmlString  from
+   forms_master fm ,
+   form_types ft
+     WHERE fm.fm_formtype_id     = ft.fm_formtype_id
+AND ft.fm_periodicity_id    in (5)
+)
+select t.fm_form_id,t.fm_formtype_id,t.fm_date,to_number(to_char(t.fm_date,'YYYYMM')) month_num,t.vessel_code,replace(x.nams,'_',' ') data_Node,extractvalue(xmltype(t.XmlString),'//'||x.nams||'/@attr') Data_point, nvl(x.vals,0) data_value,sysdate last_refresh_date
+  from data t,
+  xmltable('for $n in //*[count(./*) = 0]
+                 return
+                 <paths>
+                   <nams>{name($n)}</nams>
+                   <vals>{$n}</vals>
+                 </paths>
+                '
+                passing xmltype(t.XmlString)
+                columns nams varchar2(4000) path '/paths/nams',
+                        vals varchar2(4000) path '/paths/vals'
+               ) x
+    where is_number(x.vals)=1;
+
+   COMMENT ON MATERIALIZED VIEW "EBI_TEST_QUBIC"."MV_FORMS_MGMT_QTR_DATA"  IS 'snapshot table for snapshot EBI_TEST_QUBIC.MV_FORMS_MGMT_QTR_DATA';
+   
+ ---------------------------------- YEARLY FORMS DATA ----------
+
+
+  CREATE MATERIALIZED VIEW "EBI_TEST_QUBIC"."MV_FORMS_MGMT_YR_DATA" ("FM_FORM_ID", "FM_FORMTYPE_ID", "FM_DATE", "MONTH_NUM", "VESSEL_CODE", "DATA_NODE", "DATA_POINT", "DATA_VALUE", "LAST_REFRESH_DATE")
+  ORGANIZATION HEAP PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "TS_EBI_DAT" 
+  BUILD IMMEDIATE
+  USING INDEX 
+  REFRESH FORCE ON DEMAND
+  USING DEFAULT LOCAL ROLLBACK SEGMENT
+  USING ENFORCED CONSTRAINTS DISABLE QUERY REWRITE
+  AS with
+data as
+(  select fm.fm_form_id,fm.fm_formtype_id,fm.fm_date,fm.vessel_code,ft.fm_periodicity_id,replace(replace(fm.fm_Data,'xmlns=''generic''',''),'<?xml version=''1.0'' encoding=''utf-8''?>','') XmlString  from
+   forms_master fm ,
+   form_types ft
+     WHERE fm.fm_formtype_id     = ft.fm_formtype_id
+AND ft.fm_periodicity_id    in (6)
+)
+select t.fm_form_id,t.fm_formtype_id,t.fm_date,to_number(to_char(t.fm_date,'YYYYMM')) month_num,t.vessel_code,replace(x.nams,'_',' ') data_Node,extractvalue(xmltype(t.XmlString),'//'||x.nams||'/@attr') Data_point, nvl(x.vals,0) data_value,sysdate last_refresh_date
+  from data t,
+  xmltable('for $n in //*[count(./*) = 0]
+                 return
+                 <paths>
+                   <nams>{name($n)}</nams>
+                   <vals>{$n}</vals>
+                 </paths>
+                '
+                passing xmltype(t.XmlString)
+                columns nams varchar2(4000) path '/paths/nams',
+                        vals varchar2(4000) path '/paths/vals'
+               ) x
+    where is_number(x.vals)=1;
+
+   COMMENT ON MATERIALIZED VIEW "EBI_TEST_QUBIC"."MV_FORMS_MGMT_YR_DATA"  IS 'snapshot table for snapshot EBI_TEST_QUBIC.MV_FORMS_MGMT_YR_DATA';
+   
+ ---------------------------------- VOYAGE Type FORMS DATA ----------
+
+
+  CREATE MATERIALIZED VIEW "EBI_TEST_QUBIC"."MV_FORMS_MGMT_VT_DATA" ("FM_FORM_ID", "FM_FORMTYPE_ID", "FM_DATE", "MONTH_NUM", "VESSEL_CODE", "DATA_NODE", "DATA_POINT", "DATA_VALUE", "LAST_REFRESH_DATE")
+  ORGANIZATION HEAP PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "TS_EBI_DAT" 
+  BUILD IMMEDIATE
+  USING INDEX 
+  REFRESH FORCE ON DEMAND
+  USING DEFAULT LOCAL ROLLBACK SEGMENT
+  USING ENFORCED CONSTRAINTS DISABLE QUERY REWRITE
+  AS with
+data as
+(  select fm.fm_form_id,fm.fm_formtype_id,fm.fm_date,fm.vessel_code,ft.fm_periodicity_id,replace(replace(fm.fm_Data,'xmlns=''generic''',''),'<?xml version=''1.0'' encoding=''utf-8''?>','') XmlString  from
+   forms_master fm ,
+   form_types ft
+     WHERE fm.fm_formtype_id     = ft.fm_formtype_id
+AND ft.fm_periodicity_id    in (7)
+)
+select t.fm_form_id,t.fm_formtype_id,t.fm_date,to_number(to_char(t.fm_date,'YYYYMM')) month_num,t.vessel_code,replace(x.nams,'_',' ') data_Node,extractvalue(xmltype(t.XmlString),'//'||x.nams||'/@attr') Data_point, nvl(x.vals,0) data_value,sysdate last_refresh_date
+  from data t,
+  xmltable('for $n in //*[count(./*) = 0]
+                 return
+                 <paths>
+                   <nams>{name($n)}</nams>
+                   <vals>{$n}</vals>
+                 </paths>
+                '
+                passing xmltype(t.XmlString)
+                columns nams varchar2(4000) path '/paths/nams',
+                        vals varchar2(4000) path '/paths/vals'
+               ) x
+    where is_number(x.vals)=1;
+
+   COMMENT ON MATERIALIZED VIEW "EBI_TEST_QUBIC"."MV_FORMS_MGMT_VT_DATA"  IS 'snapshot table for snapshot EBI_TEST_QUBIC.MV_FORMS_MGMT_VT_DATA';
+   
+   
+ ---------------------------------- PM Type FORMS DATA ----------
+
+
+  CREATE MATERIALIZED VIEW "EBI_TEST_QUBIC"."MV_FORMS_MGMT_PM_DATA" ("FM_FORM_ID", "FM_FORMTYPE_ID", "FM_DATE", "MONTH_NUM", "VESSEL_CODE", "DATA_NODE", "DATA_POINT", "DATA_VALUE", "LAST_REFRESH_DATE")
+  ORGANIZATION HEAP PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "TS_EBI_DAT" 
+  BUILD IMMEDIATE
+  USING INDEX 
+  REFRESH FORCE ON DEMAND
+  USING DEFAULT LOCAL ROLLBACK SEGMENT
+  USING ENFORCED CONSTRAINTS DISABLE QUERY REWRITE
+  AS with
+data as
+(  select fm.fm_form_id,fm.fm_formtype_id,fm.fm_date,fm.vessel_code,ft.fm_periodicity_id,replace(replace(fm.fm_Data,'xmlns=''generic''',''),'<?xml version=''1.0'' encoding=''utf-8''?>','') XmlString  from
+   forms_master fm ,
+   form_types ft
+     WHERE fm.fm_formtype_id     = ft.fm_formtype_id
+AND ft.fm_periodicity_id    in (8)
+)
+select t.fm_form_id,t.fm_formtype_id,t.fm_date,to_number(to_char(t.fm_date,'YYYYMM')) month_num,t.vessel_code,replace(x.nams,'_',' ') data_Node,extractvalue(xmltype(t.XmlString),'//'||x.nams||'/@attr') Data_point, nvl(x.vals,0) data_value,sysdate last_refresh_date
+  from data t,
+  xmltable('for $n in //*[count(./*) = 0]
+                 return
+                 <paths>
+                   <nams>{name($n)}</nams>
+                   <vals>{$n}</vals>
+                 </paths>
+                '
+                passing xmltype(t.XmlString)
+                columns nams varchar2(4000) path '/paths/nams',
+                        vals varchar2(4000) path '/paths/vals'
+               ) x
+    where is_number(x.vals)=1;
+
+   COMMENT ON MATERIALIZED VIEW "EBI_TEST_QUBIC"."MV_FORMS_MGMT_PM_DATA"  IS 'snapshot table for snapshot EBI_TEST_QUBIC.MV_FORMS_MGMT_PM_DATA';
+   
+
+ ---------------------------------- Third party Type FORMS DATA ----------
+
+
+  CREATE MATERIALIZED VIEW "EBI_TEST_QUBIC"."MV_FORMS_MGMT_TP_DATA" ("FM_FORM_ID", "FM_FORMTYPE_ID", "FM_DATE", "MONTH_NUM", "VESSEL_CODE", "DATA_NODE", "DATA_POINT", "DATA_VALUE", "LAST_REFRESH_DATE")
+  ORGANIZATION HEAP PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "TS_EBI_DAT" 
+  BUILD IMMEDIATE
+  USING INDEX 
+  REFRESH FORCE ON DEMAND
+  USING DEFAULT LOCAL ROLLBACK SEGMENT
+  USING ENFORCED CONSTRAINTS DISABLE QUERY REWRITE
+  AS with
+data as
+(  select fm.fm_form_id,fm.fm_formtype_id,fm.fm_date,fm.vessel_code,ft.fm_periodicity_id,replace(replace(fm.fm_Data,'xmlns=''generic''',''),'<?xml version=''1.0'' encoding=''utf-8''?>','') XmlString  from
+   forms_master fm ,
+   form_types ft
+     WHERE fm.fm_formtype_id     = ft.fm_formtype_id
+AND ft.fm_periodicity_id    in (9)
+)
+select t.fm_form_id,t.fm_formtype_id,t.fm_date,to_number(to_char(t.fm_date,'YYYYMM')) month_num,t.vessel_code,replace(x.nams,'_',' ') data_Node,extractvalue(xmltype(t.XmlString),'//'||x.nams||'/@attr') Data_point, nvl(x.vals,0) data_value,sysdate last_refresh_date
+  from data t,
+  xmltable('for $n in //*[count(./*) = 0]
+                 return
+                 <paths>
+                   <nams>{name($n)}</nams>
+                   <vals>{$n}</vals>
+                 </paths>
+                '
+                passing xmltype(t.XmlString)
+                columns nams varchar2(4000) path '/paths/nams',
+                        vals varchar2(4000) path '/paths/vals'
+               ) x
+    where is_number(x.vals)=1;
+
+   COMMENT ON MATERIALIZED VIEW "EBI_TEST_QUBIC"."MV_FORMS_MGMT_TP_DATA"  IS 'snapshot table for snapshot EBI_TEST_QUBIC.MV_FORMS_MGMT_TP_DATA';
