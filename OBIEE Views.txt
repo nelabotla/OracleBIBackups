@@ -138,4 +138,21 @@ case when upper(A.fleet_type) in ('CONTAINERS','CONTAINER','PCTC') then 'FLEET C
 from
 vesselmaster A;
 
-
+----------- EAS -------
+create or replace view VW_EAS_DETAILED_DATA as 
+select cli.claim_id Identifier,cli.description,cli.expense_head,cli.Accommodation,cli.Meals,cli.Entertainment,cli.Transportation,cli.telephone,cli.other_expenses,cli.currency,cli.Amount Amount_Local_Currency,cli.Amount_sgd,
+CL.Created_by,cl.submitted_Date,cl.status,'Expense' type from EAS_EXPENSE_CLAIM_ITEM CLI,
+eas_expense_claim cl
+where cl.claim_id = CLI.claim_id
+union all
+select pett.entry_id identifier,pett.remarks description,null,null,null,null,null,null,null,null,null,pett.total_amount ammount_Sgd,pett.created_by,pett.submitted_date,pett.status,'PettyCash' type
+from 
+eas_pettycash_entry pett
+union all
+select dd.entry_id identifier,dd.remarks description,null,null,null,null,null,null,null,null,null,dd.total_amount amount_Sgd,dd.created_by,dd.submitted_date,dd.status,'DD' type
+from 
+EAS_DD_ENTRY dd
+union all
+select po.eas_po_id identifier,po.po_no description,null,null,null,null,null,null,null,po.currency,po.total_amount_USD,po.total_amount amount_SGD,po.created_by,po.created_date,po.status,'PO' Type
+from
+eas_purchaseorder po;
