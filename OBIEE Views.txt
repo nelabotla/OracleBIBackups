@@ -156,3 +156,42 @@ union all
 select po.eas_po_id identifier,po.po_no description,null,null,null,null,null,null,null,po.currency,po.total_amount_USD,po.total_amount amount_SGD,po.created_by,po.created_date,po.status,'PO' Type
 from
 eas_purchaseorder po;
+
+------ EAS APP RECORDS -----
+
+create or replace view vw_EAS_App_records as 
+SELECT OCS.*,RATES.RATE_FIXING EXCHANGE_RATE,round(OCS.APPROVAL_AMOUNT / RATES.RATE_FIXING,2) APPROVAL_AMOUNT_USD
+FROM
+(
+SELECT APP_RECORDS.RECORD_ID,APP_RECORDS.MODULE_NAME,APP_RECORDS.STATUS,APP_RECORDS.CREATED_DATE,APP_RECORDS.SUBMITTED_BY,APP_RECORDS.IDENTIFIER,MAX(APP_ROUTE.APP_STATUS_DATE) APPROVAL_DATE,max(app_route_id) app_route_id,APP_RECORDS.APPROVAL_AMOUNT,
+app_records.submitted_date
+FROM 
+EAS_APP_RECORDS APP_RECORDS,
+EAS_APP_ROUTE APP_ROUTE
+WHERE
+APP_RECORDS.RECORD_ID = APP_ROUTE.RECORD_ID 
+--AND  APP_RECORDS.RECORD_ID = 19456 
+GROUP BY APP_RECORDS.RECORD_ID,APP_RECORDS.MODULE_NAME,APP_RECORDS.STATUS,APP_RECORDS.CREATED_DATE,APP_RECORDS.SUBMITTED_BY,APP_RECORDS.IDENTIFIER,APP_RECORDS.APPROVAL_AMOUNT,app_records.submitted_date
+) OCS,
+MV_RATES RATES
+WHERE
+TO_char(OCS.SUBMITTED_DATE,'DD/MM/YYYY') = TO_char(RATES.RATE_DATE,'DD/MM/YYYY') AND 
+rates.currency = 'SGD';
+
+---------------------------------------------------- UPDATE ----
+update oca_user_master_new  mn set mn.outlook_email = (select upper(ocl.user_address) from oca_users_ldap ocl where
+ trim(ocl.user_os_name) is not null and ocl.user_state = 0 and ocl.user_group_name not like 'tpot%' and trim(ocl.user_group_name) is not null   
+and UPPER(MN.USER_ID) = UPPER(OCL.USER_OS_NAME));
+
+
+
+----- TRIGGER --
+
+CREATE TRIGGER UPDATE_OCS_MASTER_NEW 
+AFTER INSERT ON OCA_USER_MASTER_NEW 
+BEGIN
+update oca_user_master_new  mn set mn.outlook_email = (select upper(ocl.user_address) from oca_users_ldap ocl where
+ trim(ocl.user_os_name) is not null and ocl.user_state = 0 and ocl.user_group_name not like 'tpot%' and trim(ocl.user_group_name) is not null   
+and UPPER(MN.USER_ID) = UPPER(OCL.USER_OS_NAME));
+END;
+/
