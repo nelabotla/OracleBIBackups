@@ -195,3 +195,28 @@ update oca_user_master_new  mn set mn.outlook_email = (select upper(ocl.user_add
 and UPPER(MN.USER_ID) = UPPER(OCL.USER_OS_NAME));
 END;
 /
+
+
+------------- Contract INF ---------
+
+  CREATE OR REPLACE FORCE VIEW "EBI_TEST_QUBIC"."VW_CONTRCT_INF_TC_RATES" ("VESSEL", "SERIES", "SEQ_NO", "VOYAGE_NUMBER", "START_DATE", "END_DATE", "CONTRACT_COST", "CONTRACT_DAYS", "AVERAGE_DAY_COST") AS 
+  select TC.VESSEL,TC.SERIES,TC.SEQ_NO,TC.VOYAGE_NUMBER,
+VALID_FROM START_DATE,VALID_TO END_DATE ,SUM(CONTRACT_COST) CONTRACT_COST,ROUND(max(TO_DATE(TO_CHAR(VALID_TO,'DD/MM/YYYY'),'DD/MM/YYYY'))-min(TO_DATE(TO_CHAR(VALID_FROM,'DD/MM/YYYY'),'DD/MM/YYYY')),2) CONTRACT_DAYS,ROUND(SUM(CONTRACT_COST)/(max(TO_DATE(TO_CHAR(VALID_TO,'DD/MM/YYYY'),'DD/MM/YYYY'))-min(TO_DATE(TO_CHAR(VALID_FROM,'DD/MM/YYYY'),'DD/MM/YYYY'))),2) AVERAGE_DAY_COST
+from
+(
+select TC.VESSEL,TC.SERIES,TC.VOYAGE_NUMBER,TC.SEQ_NO,
+valid_from,valid_to,round(case when CONTRACT.TC_RATE_TYPE='D' then TC.DAILY_HIRE else 
+                                                      case when CONTRACT.TC_RATE_TYPE='M' then TC.DAILY_HIRE/(
+                                                     30)
+                                                      end end,4) DAILY_HIRE,
+                                                      TO_DATE(TO_CHAR(VALID_TO,'DD/MM/YYYY'),'DD/MM/YYYY') - TO_DATE(TO_CHAR(VALID_FROM,'DD/MM/YYYY'),'DD/MM/YYYY') CONTRACT_DURATION,
+                                                      round(case when CONTRACT.TC_RATE_TYPE='D' then TC.DAILY_HIRE else 
+                                                      case when CONTRACT.TC_RATE_TYPE='M' then TC.DAILY_HIRE/(
+                                                     30)
+                                                      end end,4) * (TO_DATE(TO_CHAR(VALID_TO,'DD/MM/YYYY'),'DD/MM/YYYY') - TO_DATE(TO_CHAR(VALID_FROM,'DD/MM/YYYY'),'DD/MM/YYYY')) Contract_Cost,
+                                                      TC.FREIGHT_CURR,CONTRACT.TC_RATE_TYPE                                                    
+                                                      
+from CONTRCT_INF_TC_RATES TC,
+      CONTRCT_INF CONTRACT where 
+     CONTRACT.VESSEL=TC.VESSEL and CONTRACT.VOYAGE_NUMBER = TC.VOYAGE_NUMBER 
+      and TC.SERIES='T' and contract.series = tc.series) tc group by TC.VESSEL,TC.SERIES,TC.SEQ_NO,TC.VOyage_number,tc.valid_from,tc.valid_to;
