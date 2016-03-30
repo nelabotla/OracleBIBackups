@@ -1,0 +1,50 @@
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <WebLogicServer> <oraclebiprod> <> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <> <> <> <1459302007592> <BEA-000000> <WebLogic Server "AdminServer" version:
+WebLogic Server 10.3.5.0  Fri Apr 1 20:20:06 PDT 2011 1398638  Copyright (c) 1995, 2009, Oracle and/or its affiliates. All rights reserved.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Notice> <Log Management> <oraclebiprod> <> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <> <> <> <1459302007654> <BEA-170019> <The server log file /oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/AdminServer/logs/AdminServer.log is opened. All server side log events will be written to this file.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Log Management> <oraclebiprod> <> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <> <> <> <1459302007659> <BEA-170023> <The Server Logging is initialized with Java Logging API implementation.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Diagnostics> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007718> <BEA-320001> <The ServerDebug service initialized successfully.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Server> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007781> <BEA-002622> <The protocol "t3" is now configured.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Server> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007781> <BEA-002622> <The protocol "t3s" is now configured.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Server> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007781> <BEA-002622> <The protocol "http" is now configured.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Server> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007781> <BEA-002622> <The protocol "https" is now configured.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Server> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007782> <BEA-002622> <The protocol "iiop" is now configured.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Server> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007783> <BEA-002622> <The protocol "iiops" is now configured.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Server> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007783> <BEA-002622> <The protocol "ldap" is now configured.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Server> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007784> <BEA-002622> <The protocol "ldaps" is now configured.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Server> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007787> <BEA-002622> <The protocol "cluster" is now configured.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Server> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007787> <BEA-002622> <The protocol "clusters" is now configured.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Server> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007790> <BEA-002622> <The protocol "snmp" is now configured.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Server> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007791> <BEA-002622> <The protocol "admin" is now configured.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Server> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007791> <BEA-002624> <The administration protocol is "t3s" and is now configured.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <RJVM> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007811> <BEA-000570> <Network Configuration for Channel "AdminServer"
+ Listen Address		 :7001
+ Public Address		 N/A
+ Http Enabled		 true
+ Tunneling Enabled	 false
+ Outbound Enabled	 false
+ Admin Traffic Enabled	 true> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Server> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007836> <BEA-002609> <Channel Service initialized.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Socket> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007849> <BEA-000415> <System has file descriptor limits of - soft: 65,536, hard: 65,536> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Socket> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007850> <BEA-000416> <Using effective file descriptor limit of: 65,536 open sockets/files.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Socket> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007850> <BEA-000406> <PosixSocketMuxer was built on Apr 24 2007 16:05:00> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Socket> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007873> <BEA-000436> <Allocating 4 reader threads.> 
+####<Mar 30, 2016 9:40:07 AM SGT> <Info> <Socket> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302007874> <BEA-000446> <Native IO Enabled.> 
+####<Mar 30, 2016 9:40:08 AM SGT> <Info> <IIOP> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302008034> <BEA-002014> <IIOP subsystem enabled.> 
+####<Mar 30, 2016 9:40:08 AM SGT> <Error> <EmbeddedLDAP> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302008431> <BEA-000000> <Error opening the Transaction Log: /oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/AdminServer/data/ldap/ldapfiles/EmbeddedLDAP.tran (Permission denied)> 
+####<Mar 30, 2016 9:40:08 AM SGT> <Error> <EmbeddedLDAP> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302008431> <BEA-000000> <Error Instantiating 'dc=bifoundation_domain': null> 
+####<Mar 30, 2016 9:40:08 AM SGT> <Critical> <EmbeddedLDAP> <oraclebiprod> <AdminServer> <[ACTIVE] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <> <1459302008437> <BEA-171522> <An error occurred while initializing the Embedded LDAP Server. The exception thrown is java.lang.ClassCastException: com.octetstring.vde.backend.BackendRoot cannot be cast to com.octetstring.vde.backend.standard.BackendStandard. This may indicate a problem with the data files for the Embedded LDAP Server. If the problem is with the data files and it can not be corrected, backups of previous versions of the data files exist in /oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/AdminServer/data/ldap/backup.> 
+####<Mar 30, 2016 9:40:08 AM SGT> <Critical> <WebLogicServer> <oraclebiprod> <AdminServer> <main> <<WLS Kernel>> <> <> <1459302008438> <BEA-000362> <Server failed. Reason: 
+
+There are 1 nested errors:
+
+java.lang.ClassCastException: com.octetstring.vde.backend.BackendRoot cannot be cast to com.octetstring.vde.backend.standard.BackendStandard
+	at weblogic.ldap.EmbeddedLDAP.start(EmbeddedLDAP.java:303)
+	at weblogic.t3.srvr.SubsystemRequest.run(SubsystemRequest.java:64)
+	at weblogic.work.ExecuteThread.execute(ExecuteThread.java:209)
+	at weblogic.work.ExecuteThread.run(ExecuteThread.java:178)
+
+> 
+####<Mar 30, 2016 9:40:08 AM SGT> <Notice> <WebLogicServer> <oraclebiprod> <AdminServer> <main> <<WLS Kernel>> <> <> <1459302008456> <BEA-000365> <Server state changed to FAILED> 
+####<Mar 30, 2016 9:40:08 AM SGT> <Error> <WebLogicServer> <oraclebiprod> <AdminServer> <main> <<WLS Kernel>> <> <> <1459302008457> <BEA-000383> <A critical service failed. The server will shut itself down> 
+####<Mar 30, 2016 9:40:08 AM SGT> <Notice> <WebLogicServer> <oraclebiprod> <AdminServer> <main> <<WLS Kernel>> <> <> <1459302008458> <BEA-000365> <Server state changed to FORCE_SHUTTING_DOWN> 
+####<Mar 30, 2016 9:40:08 AM SGT> <Info> <WebLogicServer> <oraclebiprod> <AdminServer> <main> <<WLS Kernel>> <> <> <1459302008461> <BEA-000236> <Stopping execute threads.> 

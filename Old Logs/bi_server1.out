@@ -1,0 +1,140 @@
+<Mar 30, 2016 9:54:46 AM> <INFO> <NodeManager> <Server output log file is '/oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/bi_server1/logs/bi_server1.out'>
+SVR_GRP = obi
+.
+.
+JAVA Memory arguments: -Xms256m -Xmx2048m -XX:MaxPermSize=512m
+.
+WLS Start Mode=Production
+.
+CLASSPATH=/oracle/obiee11g/product/oracle_common/modules/oracle.jdbc_11.1.1/ojdbc6dms.jar:/oracle/obiee11g/product/Oracle_BI1/bifoundation/jdbc/jdk16/bijdbc.jar::/oracle/obiee11g/product/patch_wls1035/profiles/default/sys_manifest_classpath/weblogic_patch.jar:/oracle/obiee11g/product/Oracle_BI1/jdk/lib/tools.jar:/oracle/obiee11g/product/wlserver_10.3/server/lib/weblogic_sp.jar:/oracle/obiee11g/product/wlserver_10.3/server/lib/weblogic.jar:/oracle/obiee11g/product/modules/features/weblogic.server.modules_10.3.5.0.jar:/oracle/obiee11g/product/wlserver_10.3/server/lib/webservices.jar:/oracle/obiee11g/product/modules/org.apache.ant_1.7.1/lib/ant-all.jar:/oracle/obiee11g/product/modules/net.sf.antcontrib_1.1.0.0_1-0b2/lib/ant-contrib.jar:/oracle/obiee11g/product/wlserver_10.3/server/lib/weblogic.jar:/oracle/obiee11g/product/oracle_common/modules/oracle.dms_11.1.1/dms.jar:/oracle/obiee11g/product/oracle_common/modules/oracle.jmx_11.1.1/jmxframework.jar:/oracle/obiee11g/product/oracle_common/modules/oracle.jmx_11.1.1/jmxspi.jar:/oracle/obiee11g/product/oracle_common/modules/oracle.odl_11.1.1/ojdl.jar:/oracle/obiee11g/product/oracle_common/soa/modules/commons-cli-1.1.jar:/oracle/obiee11g/product/oracle_common/soa/modules/oracle.soa.mgmt_11.1.1/soa-infra-mgmt.jar:/oracle/obiee11g/product/oracle_common/modules/oracle.jrf_11.1.1/jrf.jar:/oracle/obiee11g/product/wlserver_10.3/common/derby/lib/derbyclient.jar:/oracle/obiee11g/product/wlserver_10.3/server/lib/xqrl.jar:/oracle/obiee11g/product/patch_wls1035/profiles/default/sys_manifest_classpath/weblogic_patch.jar:/oracle/obiee11g/product/Oracle_BI1/jdk/lib/tools.jar:/oracle/obiee11g/product/wlserver_10.3/server/lib/weblogic_sp.jar:/oracle/obiee11g/product/wlserver_10.3/server/lib/weblogic.jar:/oracle/obiee11g/product/modules/features/weblogic.server.modules_10.3.5.0.jar:/oracle/obiee11g/product/wlserver_10.3/server/lib/webservices.jar:/oracle/obiee11g/product/modules/org.apache.ant_1.7.1/lib/ant-all.jar:/oracle/obiee11g/product/modules/net.sf.antcontrib_1.1.0.0_1-0b2/lib/ant-contrib.jar::/oracle/obiee11g/product
+.
+PATH=/oracle/obiee11g/product/wlserver_10.3/server/bin:/oracle/obiee11g/product/modules/org.apache.ant_1.7.1/bin:/oracle/obiee11g/product/Oracle_BI1/jdk/jre/bin:/oracle/obiee11g/product/Oracle_BI1/jdk/bin:/oracle/obiee11g/product/wlserver_10.3/server/bin:/oracle/obiee11g/product/modules/org.apache.ant_1.7.1/bin:/oracle/obiee11g/product/Oracle_BI1/jdk/jre/bin:/oracle/obiee11g/product/Oracle_BI1/jdk/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/obiee/bin
+.
+***************************************************
+*  To start WebLogic Server, use a username and   *
+*  password assigned to an admin-level user.  For *
+*  server administration, use the WebLogic Server *
+*  console at http://hostname:port/console        *
+***************************************************
+starting weblogic with Java version:
+java version "1.6.0_35"
+Java(TM) SE Runtime Environment (build 1.6.0_35-b52)
+Java HotSpot(TM) 64-Bit Server VM (build 20.10-b01, mixed mode)
+Starting WLS with line:
+/oracle/obiee11g/product/Oracle_BI1/jdk/bin/java -server   -Xms256m -Xmx2048m -XX:MaxPermSize=512m -Dweblogic.Name=bi_server1 -Djava.security.policy=/oracle/obiee11g/product/wlserver_10.3/server/lib/weblogic.policy  -Dweblogic.ProductionModeEnabled=true -Dweblogic.system.BootIdentityFile=/oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/bi_server1/data/nodemanager/boot.properties -Dweblogic.nodemanager.ServiceEnabled=true -Dweblogic.security.SSL.ignoreHostnameVerification=false -Dweblogic.ReverseDNSAllowed=false -Dserver.group=obi  -da -Dplatform.home=/oracle/obiee11g/product/wlserver_10.3 -Dwls.home=/oracle/obiee11g/product/wlserver_10.3/server -Dweblogic.home=/oracle/obiee11g/product/wlserver_10.3/server  -Dcommon.components.home=/oracle/obiee11g/product/oracle_common -Djrf.version=11.1.1 -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.Jdk14Logger -Ddomain.home=/oracle/obiee11g/product/user_projects/domains/bifoundation_domain -Djrockit.optfile=/oracle/obiee11g/product/oracle_common/modules/oracle.jrf_11.1.1/jrocket_optfile.txt -Doracle.server.config.dir=/oracle/obiee11g/product/user_projects/domains/bifoundation_domain/config/fmwconfig/servers/bi_server1 -Doracle.domain.config.dir=/oracle/obiee11g/product/user_projects/domains/bifoundation_domain/config/fmwconfig  -Digf.arisidbeans.carmlloc=/oracle/obiee11g/product/user_projects/domains/bifoundation_domain/config/fmwconfig/carml  -Digf.arisidstack.home=/oracle/obiee11g/product/user_projects/domains/bifoundation_domain/config/fmwconfig/arisidprovider -Doracle.security.jps.config=/oracle/obiee11g/product/user_projects/domains/bifoundation_domain/config/fmwconfig/jps-config.xml -Doracle.deployed.app.dir=/oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/bi_server1/tmp/_WL_user -Doracle.deployed.app.ext=/- -Dweblogic.alternateTypesDirectory=/oracle/obiee11g/product/oracle_common/modules/oracle.ossoiap_11.1.1,/oracle/obiee11g/product/oracle_common/modules/oracle.oamprovider_11.1.1,/oracle/obiee11g/product/oracle_common/modules/oracle.jps_11.1.1 -Djava.protocol.handler.pkgs=oracle.mds.net.protocol  -Dweblogic.jdbc.remoteEnabled=false -Dbi.oracle.home=/oracle/obiee11g/product/Oracle_BI1 -DEPM_ORACLE_HOME=/oracle/obiee11g/product/Oracle_BI1 -Dweblogic.MaxMessageSize=50000000 -DEPM_ORACLE_HOME=/oracle/obiee11g/product/Oracle_BI1 -DHYPERION_HOME=/oracle/obiee11g/product/Oracle_BI1 -DEPM_ORACLE_INSTANCE=novalue -Dhyperion.home=/oracle/obiee11g/product/Oracle_BI1 -DEPM_REG_PROPERTIES_PATH=/oracle/obiee11g/product/user_projects/domains/bifoundation_domain/config/fmwconfig -Depm.useApplicationContextId=false -Doracle.biee.search.bisearchproperties=/oracle/obiee11g/product/Oracle_BI1/bifoundation/jee/BISearchConfig.properties -Dweblogic.management.clearTextCredentialAccessEnabled=true -Doracle.notification.filewatching.interval=2000 -Dweblogic.security.SSL.ignoreHostnameVerification=true -Dweblogic.security.SSL.enableJSSE=true -Dfile.encoding=utf-8 -Doracle.ecsf.security.service=oracle.biee.search.security.BISearchSecurityService -Doracle.ecsf.configuration.class=oracle.biee.search.services.BISearchServiceConfiguration -Dxdo.server.config.dir=/oracle/obiee11g/product/user_projects/domains/bifoundation_domain/config/bipublisher -DXDO_FONT_DIR=/oracle/obiee11g/product/Oracle_BI1/common/fonts  -Dem.oracle.home=/oracle/obiee11g/product/oracle_common -Djava.awt.headless=true -Dweblogic.management.discover=false -Dweblogic.management.server=http://192.168.166.203:7001  -Dwlw.iterativeDev=false -Dwlw.testConsole=false -Dwlw.logErrorsToConsole=false -Dweblogic.ext.dirs=/oracle/obiee11g/product/patch_wls1035/profiles/default/sysext_manifest_classpath  weblogic.Server
+<Mar 30, 2016 9:54:47 AM SGT> <Info> <Security> <BEA-090905> <Disabling CryptoJ JCE Provider self-integrity check for better startup performance. To enable this check, specify -Dweblogic.security.allowCryptoJDefaultJCEVerification=true> 
+<Mar 30, 2016 9:54:47 AM SGT> <Info> <Security> <BEA-090906> <Changing the default Random Number Generator in RSA CryptoJ from ECDRBG to FIPS186PRNG. To disable this change, specify -Dweblogic.security.allowCryptoJDefaultPRNG=true> 
+<Mar 30, 2016 9:54:47 AM SGT> <Info> <WebLogicServer> <BEA-000377> <Starting WebLogic Server with Java HotSpot(TM) 64-Bit Server VM Version 20.10-b01 from Sun Microsystems Inc.> 
+<Mar 30, 2016 9:54:56 AM SGT> <Info> <Management> <BEA-141107> <Version: WebLogic Server 10.3.5.0  Fri Apr 1 20:20:06 PDT 2011 1398638 > 
+<Mar 30, 2016 9:54:58 AM SGT> <Notice> <WebLogicServer> <BEA-000365> <Server state changed to STARTING> 
+<Mar 30, 2016 9:54:58 AM SGT> <Info> <WorkManager> <BEA-002900> <Initializing self-tuning thread pool> 
+<Mar 30, 2016 9:54:58 AM SGT> <Notice> <Log Management> <BEA-170019> <The server log file /oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/bi_server1/logs/bi_server1.log is opened. All server side log events will be written to this file.> 
+<Mar 30, 2016 9:57:05 AM SGT> <Notice> <Security> <BEA-090082> <Security initializing using security realm myrealm.> 
+<Mar 30, 2016 9:57:09 AM SGT> <Notice> <WebLogicServer> <BEA-000365> <Server state changed to STANDBY> 
+<Mar 30, 2016 9:57:09 AM SGT> <Notice> <WebLogicServer> <BEA-000365> <Server state changed to STARTING> 
+<Mar 30, 2016 9:57:11 AM SGT> <Warning> <Munger> <BEA-2156203> <A version attribute was not found in element application in the deployment descriptor in /oracle/obiee11g/product/oracle_common/atgpf/modules/oracle.applcore.model_11.1.1/oracle.applcore.model.stub.ear/META-INF/application.xml. A version attribute is required, but this version of the Weblogic Server will assume that the JEE5 is used. Future versions of the Weblogic Server will reject descriptors that do not specify the JEE version.> 
+<Mar 30, 2016 9:57:12 AM SGT> <Warning> <Security> <BEA-090668> <Ignored deployment of role "Admin" for resource "type=<url>, application=DMS Application#11.1.1.1.0, contextPath=/dms, uri=/"> 
+<Mar 30, 2016 9:57:14 AM SGT> <Warning> <Connector> <BEA-190155> <Compliance checking/validation of the resource adapter /oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/bi_server1/tmp/_WL_user/ESSAPP/h1izqz/stub-ess-ra.rar resulted in the following warnings:
+The ra.xml <resourceadapter-class> class 'oracle.as.scheduler.adapter.ra.RAImpl' should implement java.io.Serializable but does not.> 
+<Mar 30, 2016 9:57:14 AM SGT> <Warning> <J2EE> <BEA-160140> <Unresolved optional package references (in META-INF/MANIFEST.MF): [Extension-Name: com/oracle/adfm, Specification-Version: 1, referenced from: /oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/bi_server1/tmp/_WL_user/bicomposer_11.1.1/m9h5uz]. Make sure the referenced optional package has been deployed as a library.> 
+<Mar 30, 2016 9:57:14 AM SGT> <Warning> <oracle.jps.credstore> <JPS-01033> <Cannot set credential. Reason oracle.security.jps.service.credstore.CredentialAlreadyExistsException: JPS-01007: The credential with map jdevadf-4786 and key anonymous#bi-default already exists..> 
+<Mar 30, 2016 9:57:14 AM SGT> <Warning> <oracle.jps.upgrade> <JPS-06003> <Cannot migrate credential folder/key jdevadf-4786/anonymous#bi-default.Reason oracle.security.jps.service.credstore.CredentialAlreadyExistsException: JPS-01007: The credential with map jdevadf-4786 and key anonymous#bi-default already exists..> 
+<Mar 30, 2016 9:57:14 AM SGT> <Warning> <oracle.jps.credstore> <JPS-01033> <Cannot set credential. Reason oracle.security.jps.service.credstore.CredentialAlreadyExistsException: JPS-01007: The credential with map bireportwizard-4786 and key anonymous#bi-default already exists..> 
+<Mar 30, 2016 9:57:14 AM SGT> <Warning> <oracle.jps.upgrade> <JPS-06003> <Cannot migrate credential folder/key bireportwizard-4786/anonymous#bi-default.Reason oracle.security.jps.service.credstore.CredentialAlreadyExistsException: JPS-01007: The credential with map bireportwizard-4786 and key anonymous#bi-default already exists..> 
+<Mar 30, 2016 9:57:14 AM SGT> <Warning> <oracle.jps.credstore> <JPS-01033> <Cannot set credential. Reason oracle.security.jps.service.credstore.CredentialAlreadyExistsException: JPS-01007: The credential with map bicomposer and key anonymous#bi-default already exists..> 
+<Mar 30, 2016 9:57:14 AM SGT> <Warning> <oracle.jps.upgrade> <JPS-06003> <Cannot migrate credential folder/key bicomposer/anonymous#bi-default.Reason oracle.security.jps.service.credstore.CredentialAlreadyExistsException: JPS-01007: The credential with map bicomposer and key anonymous#bi-default already exists..> 
+<Mar 30, 2016 9:57:18 AM SGT> <Warning> <Munger> <BEA-2156203> <A version attribute was not found in element application in the deployment descriptor in /oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/bi_server1/tmp/_WL_user/oracle.applcore.model/vy4gk6/META-INF/application.xml. A version attribute is required, but this version of the Weblogic Server will assume that the JEE5 is used. Future versions of the Weblogic Server will reject descriptors that do not specify the JEE version.> 
+<Mar 30, 2016 9:57:18 AM SGT> <Warning> <Munger> <BEA-2156203> <A version attribute was not found in element application in the deployment descriptor in /oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/bi_server1/tmp/_WL_user/oracle.applcore.model/vy4gk6/META-INF/application.xml. A version attribute is required, but this version of the Weblogic Server will assume that the JEE5 is used. Future versions of the Weblogic Server will reject descriptors that do not specify the JEE version.> 
+<Mar 30, 2016 9:57:19 AM SGT> <Warning> <Munger> <BEA-2156203> <A version attribute was not found in element web-app in the deployment descriptor in /oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/bi_server1/tmp/_WL_user/bilocaladmin_11.1.1/iv2ub5/biconfigmbeans.war/WEB-INF/web.xml. A version attribute is required, but this version of the Weblogic Server will assume that the JEE5 is used. Future versions of the Weblogic Server will reject descriptors that do not specify the JEE version.> 
+<Mar 30, 2016 9:57:22 AM SGT> <Warning> <EJB> <BEA-010001> <While deploying EJB 'AsyncAdminService_AsyncRequestProcessorMDB', class oracle.j2ee.ws.server.jaxws.AsyncRequestProcessorMDB was loaded from the system classpath. As a result, this class cannot be reloaded while the server is running. To prevent this behavior in the future, make sure the class is not located in the server classpath.> 
+<Mar 30, 2016 9:57:22 AM SGT> <Warning> <EJB> <BEA-010001> <While deploying EJB 'AsyncAdminService_AsyncResponseProcessorMDB', class oracle.j2ee.ws.server.jaxws.AsyncResponseProcessorMDB was loaded from the system classpath. As a result, this class cannot be reloaded while the server is running. To prevent this behavior in the future, make sure the class is not located in the server classpath.> 
+<Mar 30, 2016 9:57:23 AM SGT> <Warning> <Munger> <BEA-2156203> <A version attribute was not found in element application in the deployment descriptor in /oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/bi_server1/tmp/_WL_user/oracle.applcore.model/vy4gk6/META-INF/application.xml. A version attribute is required, but this version of the Weblogic Server will assume that the JEE5 is used. Future versions of the Weblogic Server will reject descriptors that do not specify the JEE version.> 
+<Mar 30, 2016 9:57:23 AM SGT> <Warning> <J2EE> <BEA-160140> <Unresolved optional package references (in META-INF/MANIFEST.MF): [Extension-Name: oracle.apps.fod.virusScan.biAdapter, referenced from: /oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/bi_server1/tmp/_WL_user/bipublisher_11.1.1/fiu5yf], [Extension-Name: oracle.apps.fod.virusScan.core, referenced from: /oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/bi_server1/tmp/_WL_user/bipublisher_11.1.1/fiu5yf], [Extension-Name: oracle.apps.fod.virusScan.commandLineAdapter, referenced from: /oracle/obiee11g/product/user_projects/domains/bifoundation_domain/servers/bi_server1/tmp/_WL_user/bipublisher_11.1.1/fiu5yf]. Make sure the referenced optional package has been deployed as a library.> 
+<Mar 30, 2016 9:57:41 AM SGT> <Warning> <oracle.as.jmx.framework.MessageLocalizationHelper> <J2EE JMX-46041> <The resource for bundle "oracle.adf.mbean.share.connection.bi.soap.resources.BISoapMBeanBundle_en" with key "ATR_STATIC_RESOURCES_LOCATION_AUTOMATIC" cannot be found.> 
+<Mar 30, 2016 9:57:41 AM SGT> <Warning> <oracle.as.jmx.framework.MessageLocalizationHelper> <J2EE JMX-46041> <The resource for bundle "oracle.adf.mbean.share.connection.bi.soap.resources.BISoapMBeanBundle_en" with key "ATTR_ADF_COOKIES_TO_SKIP" cannot be found.> 
+<Mar 30, 2016 9:57:41 AM SGT> <Warning> <oracle.as.jmx.framework.MessageLocalizationHelper> <J2EE JMX-46041> <The resource for bundle "oracle.adf.mbean.share.connection.bi.soap.resources.BISoapMBeanBundle_en" with key "ATTR_BI_COOKIES_TO_MAINTAIN" cannot be found.> 
+<Mar 30, 2016 9:57:41 AM SGT> <Warning> <oracle.as.jmx.framework.MessageLocalizationHelper> <J2EE JMX-46041> <The resource for bundle "oracle.adf.mbean.share.connection.bi.soap.resources.BISoapMBeanBundle_en" with key "ATTR_BI_COOKIES_TO_SKIP" cannot be found.> 
+<Mar 30, 2016 9:57:42 AM SGT> <Warning> <oracle.adfinternal.view.faces.partition.FeatureUtils> <ADF_FACES-30130> <Ignoring feature-dependency on feature "AdfDvtCommon".  No such feature exists.> 
+REGISTERED oracle.biee.local:type=DomainConfigProxy,group=Config
+<Mar 30, 2016 9:57:49 AM SGT> <Error> <javax.enterprise.resource.webcontainer.jsf.application> <BEA-000000> <JSF1030: The specified InjectionProvider implementation 'com.bea.faces.WeblogicInjectionProvider' cannot be loaded.> 
+<Mar 30, 2016 9:57:49 AM SGT> <Warning> <oracle.mapviewer.logger> <BEA-000000> <destroying ALL mapmaker instances.> 
+Mar 30, 2016 9:57:49 AM oracle.sdovis.SRSConstants getDPI
+INFO: Using 96 as default dpi.
+Mar 30, 2016 9:57:49 AM oracle.lbs.mapserver.core.MapperConfig loadMapViewerConfig
+INFO: Setting default dpi to: 96
+Mar 30, 2016 9:57:49 AM oracle.sdovis.GlobalVisContext <clinit>
+WARNING: will use 96 as default dpi.
+Mar 30, 2016 9:57:49 AM oracle.sdovis.SDataProviderMgr registerProvider
+INFO: Spatial Provider shapefileSDP has been registered.
+Mar 30, 2016 9:57:49 AM oracle.sdovis.SDataProviderMgr registerProvider
+INFO: Spatial Provider ogrSDP has been registered.
+Mar 30, 2016 9:57:49 AM oracle.sdovis.SDataProviderMgr registerProvider
+INFO: Spatial Provider teradataSDP has been registered.
+Mar 30, 2016 9:57:50 AM oracle.lbs.mapserver.core.MapperConfig createMappers
+INFO: Data source [mvdemo] is editable? false
+Mar 30, 2016 9:57:50 AM oracle.sdovis.CacheMgr2 init
+INFO: Spatial Data Cache opened. Region=SDOVIS_DATA.
+Mar 30, 2016 9:57:50 AM oracle.sdovis.CacheMgr2 init
+INFO: 	max_cache_size=32 MB.
+Mar 30, 2016 9:57:50 AM oracle.sdovis.CacheMgr2 createSubRegion
+INFO: sub region sdovis_subreg_mvdemo2_jdbc:oracle:thin:@192.168.166.201:1521:orcl created in cache.
+Mar 30, 2016 9:57:50 AM oracle.lbs.mapserver.core.MapperPool addMapper
+INFO: added a mapper instance to the pool [data src=mvdemo]
+Mar 30, 2016 9:57:50 AM oracle.lbs.mapserver.core.MapperPool addMapper
+INFO: added a mapper instance to the pool [data src=mvdemo]
+Mar 30, 2016 9:57:50 AM oracle.lbs.mapserver.core.MapperPool addMapper
+INFO: added a mapper instance to the pool [data src=mvdemo]
+Mar 30, 2016 9:57:50 AM oracle.lbs.mapserver.core.MapperConfig loadConfigFile
+INFO: Map Recycling thread started.
+Mar 30, 2016 9:57:50 AM oracle.lbs.mapserver.oms$ColdStart run
+INFO: *** Oracle MapViewer started. ***
+Mar 30, 2016 9:57:50 AM oracle.lbs.foi.FOIServer init
+INFO: *** Oracle Feature of Interest (FOI) Server started. ***
+Mar 30, 2016 9:57:50 AM oracle.lbs.dataserver.MapDataServer <init>
+INFO: *** Oracle MapViewer Data Server started. ***
+Mar 30, 2016 9:57:50 AM oracle.lbs.mapcache.cache.MapCache <init>
+INFO: Initialize tile layer MVDEMO.CUSTOMER_MAP
+Mar 30, 2016 9:57:50 AM oracle.lbs.mapcache.cache.MapCache <init>
+INFO: Tile layer initialized.
+Mar 30, 2016 9:57:50 AM oracle.lbs.mapcache.cache.MapCache <init>
+INFO: Initialize tile layer MVDEMO.WORLD_MAP
+Mar 30, 2016 9:57:50 AM oracle.lbs.mapcache.cache.MapCache <init>
+INFO: Tile layer initialized.
+Mar 30, 2016 9:57:50 AM oracle.lbs.mapcache.cache.MapCache <init>
+INFO: Initialize tile layer MVDEMO.DEMO_MAP
+Mar 30, 2016 9:57:50 AM oracle.lbs.mapcache.cache.MapCache <init>
+INFO: Tile layer initialized.
+Mar 30, 2016 9:57:50 AM oracle.lbs.mapcache.cache.MapCache <init>
+INFO: Initialize tile layer MVDEMO.HIGHWAY_MAP
+Mar 30, 2016 9:57:50 AM oracle.lbs.mapcache.cache.MapCache <init>
+INFO: Tile layer initialized.
+Mar 30, 2016 9:57:50 AM oracle.lbs.mapcache.cache.MapCache <init>
+INFO: Initialize tile layer MVDEMO.GOOGLE_MAP
+log4j:WARN No appenders could be found for logger (org.quartz.simpl.SimpleThreadPool).
+log4j:WARN Please initialize the log4j system properly.
+contextPath has been resolved from 'BI_ORACLE_HOME/products/epmstatic' to '/oracle/obiee11g/product/Oracle_BI1/products/epmstatic'
+contextPath has been resolved from 'BI_ORACLE_HOME/products/epmstatic/bpmui' to '/oracle/obiee11g/product/Oracle_BI1/products/epmstatic/bpmui'
+contextPath has been resolved from 'BI_ORACLE_HOME/products/epmstatic/calcmgr/docs' to '/oracle/obiee11g/product/Oracle_BI1/products/epmstatic/calcmgr/docs'
+contextPath has been resolved from 'BI_ORACLE_HOME/clients/bipublisher' to '/oracle/obiee11g/product/Oracle_BI1/clients/bipublisher'
+contextPath has been resolved from 'BI_ORACLE_HOME/products/epmstatic/wspace' to '/oracle/obiee11g/product/Oracle_BI1/products/epmstatic/wspace'
+The BI Content Server has been initialised.
+Mar 30, 2016 9:57:51 AM oracle.lbs.mapcache.admin.DBAdminTaskUtil loadTasksFromDataSource
+INFO: Cannot read USER_SDO_TILE_ADMIN_TASKS view from database.(mvdemo)
+Mar 30, 2016 9:57:51 AM oracle.lbs.mapcache.MCSServlet$ColdStart run
+INFO: *** Oracle MapTileServer started. ***
+<Mar 30, 2016 9:57:51 AM SGT> <Warning> <WorkManager> <BEA-002919> <Unable to find a WorkManager with name ESSRAWM. Dispatch policy ESSRAWM will map to the default WorkManager for the application bipublisher#11.1.1> 
+<Mar 30, 2016 9:57:51 AM SGT> <Warning> <EJB> <BEA-014014> <The message driven bean (MDB) named "ESSAppEndpoint" has a dispatch policy "ESSRAWM" that refers to an unknown work manager. The default work manager will be used instead.> 
+<Mar 30, 2016 9:57:53 AM SGT> <Notice> <Log Management> <BEA-170027> <The Server has established connection with the Domain level Diagnostic Service successfully.> 
+<Mar 30, 2016 9:57:53 AM SGT> <Notice> <Cluster> <BEA-000197> <Listening for announcements from cluster using unicast cluster messaging> 
+<Mar 30, 2016 9:57:53 AM SGT> <Notice> <Cluster> <BEA-000133> <Waiting to synchronize with other running members of bi_cluster.> 
+<Mar 30, 2016 9:58:23 AM SGT> <Notice> <WebLogicServer> <BEA-000365> <Server state changed to ADMIN> 
+<Mar 30, 2016 9:58:24 AM SGT> <Notice> <WebLogicServer> <BEA-000365> <Server state changed to RESUMING> 
+<Mar 30, 2016 9:58:24 AM SGT> <Notice> <Cluster> <BEA-000162> <Starting "async" replication service with remote cluster address "null"> 
+<Mar 30, 2016 9:58:25 AM SGT> <Notice> <Server> <BEA-002613> <Channel "Default[2]" is now listening on 127.0.0.1:9704 for protocols iiop, t3, CLUSTER-BROADCAST, ldap, snmp, http.> 
+<Mar 30, 2016 9:58:25 AM SGT> <Notice> <Server> <BEA-002613> <Channel "Default" is now listening on 192.168.166.203:9704 for protocols iiop, t3, CLUSTER-BROADCAST, ldap, snmp, http.> 
+<Mar 30, 2016 9:58:25 AM SGT> <Notice> <Server> <BEA-002613> <Channel "Default[1]" is now listening on fe80:0:0:0:250:56ff:feb3:5bc6:9704 for protocols iiop, t3, CLUSTER-BROADCAST, ldap, snmp, http.> 
+<Mar 30, 2016 9:58:25 AM SGT> <Notice> <Server> <BEA-002613> <Channel "Default[3]" is now listening on 0:0:0:0:0:0:0:1:9704 for protocols iiop, t3, CLUSTER-BROADCAST, ldap, snmp, http.> 
+<Mar 30, 2016 9:58:25 AM SGT> <Notice> <WebLogicServer> <BEA-000330> <Started WebLogic Managed Server "bi_server1" for domain "bifoundation_domain" running in Production Mode> 
+<Mar 30, 2016 9:58:26 AM SGT> <Notice> <WebLogicServer> <BEA-000365> <Server state changed to RUNNING> 
+<Mar 30, 2016 9:58:26 AM SGT> <Notice> <WebLogicServer> <BEA-000360> <Server started in RUNNING mode> 
+<Mar 30, 2016 10:06:18 AM SGT> <Warning> <Socket> <BEA-000449> <Closing socket as no data read from it on 192.168.137.42:57,592 during the configured idle timeout of 5 secs> 
